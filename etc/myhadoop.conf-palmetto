@@ -66,4 +66,4 @@ MH_PERSIST_DIR=/newscratch/$USER/hdfs
 #
 #   This is the location of the user's per-job Hadoop configuration directory.  
 #
-#HADOOP_CONF_DIR=$HOME/hadoop-conf.$PBS_JOBID
+HADOOP_CONF_DIR=$HOME/hadoop-conf.$(cut -d. -f1 <<< $PBS_JOBID)
