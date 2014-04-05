@@ -18,4 +18,4 @@ export HADOOP_DATA_DIR="/local_scratch/pbs-hadoop-$USER/data"
 # Set this to the location where you want the Hadoop logfies
 export HADOOP_LOG_DIR="/local_scratch/pbs-hadoop-$USER/log"
 
-export PATH=${JAVA_HOME}/bin:${HADOOP_HOME}/bin:${PATH}
+export PATH=${JAVA_HOME}/bin:${HADOOP_HOME}/bin:${HADOOP_HOME}/sbin:${PATH}
