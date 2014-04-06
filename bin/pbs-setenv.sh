@@ -4,7 +4,7 @@ export JAVA_HOME="/home/$USER/software/jdk1.7.0_25"
 
 # Set this to location of myHadoop 
 export MY_HADOOP_HOME="/home/$USER/pbs_hadoop2"
-export HADOOP_CONF_DIR="/home/$USER/myhadoop2_config"
+export HADOOP_CONF_DIR="${MY_HADOOP_HOME}/config"
 
 # Set this to the location of the Hadoop installation
 export HADOOP_HOME="/home/$USER/software/hadoop-2.2.0"

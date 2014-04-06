@@ -1,32 +1,3 @@
-diff --git a/conf/configuration.xsl b/conf/configuration.xsl
-index e69de29..377cdbe 100644
---- a/conf/configuration.xsl
-+++ b/conf/configuration.xsl
-@@ -0,0 +1,24 @@
-+<?xml version="1.0"?>
-+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
-+<xsl:output method="html"/>
-+<xsl:template match="configuration">
-+<html>
-+<body>
-+<table border="1">
-+<tr>
-+ <td>name</td>
-+ <td>value</td>
-+ <td>description</td>
-+</tr>
-+<xsl:for-each select="property">
-+<tr>
-+  <td><a name="{name}"><xsl:value-of select="name"/></a></td>
-+  <td><xsl:value-of select="value"/></td>
-+  <td><xsl:value-of select="description"/></td>
-+</tr>
-+</xsl:for-each>
-+</table>
-+</body>
-+</html>
-+</xsl:template>
-+</xsl:stylesheet>
 diff --git a/conf/core-site.xml b/conf/core-site.xml
 index e69de29..8e6daa3 100644
 --- a/conf/core-site.xml
@@ -129,7 +100,7 @@ index e69de29..642d363 100644
 + <description>The hostname of the RM.</description>
 + <final>true</final>
 +</property>
-+<property/>
++<property>
 + <name>yarn.nodemanager.local-dirs</name>
 + <value>MAPRED_LOCAL_DIR</value>
 + <description>The hostname of the RM.  
