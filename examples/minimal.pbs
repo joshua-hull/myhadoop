@@ -9,24 +9,16 @@ set -x
 
 NUM_HOSTS=$(wc -l < ${PBS_NODEFILE})
 
-: "Set up the configurations for myHadoop"
 $MY_HADOOP_HOME/bin/myhadoop-configure.sh -n $NUM_HOSTS -c $HADOOP_CONF_DIR
 
-: "Format HDFS"
-# time $HADOOP_PREFIX/bin/hadoop --config $HADOOP_CONF_DIR namenode -format
+hdfs --config $HADOOP_CONF_DIR namenode -format
 
-: "Start all Hadoop daemons"
-# $HADOOP_PREFIX/sbin/start-dfs.sh
-# $HADOOP_PREFIX/sbin/start-yarn.sh
+start-dfs.sh
+start-yarn.sh
 
-# sleep 30s
-
-: "Hadoop Cluster Ready"
 sleep 90m
 
-: "Stop all Hadoop daemons"
-# $HADOOP_PREFIX/sbin/stop-dfs.sh
-# $HADOOP_PREFIX/sbin/stop-yarn.sh
+stop-dfs.sh
+stop-yarn.sh
 
-: "Clean up"
-# $MY_HADOOP_HOME/bin/myhadoop-cleanup.sh -n $NUM_HOSTS
+$MY_HADOOP_HOME/bin/myhadoop-cleanup.sh -n $NUM_HOSTS
