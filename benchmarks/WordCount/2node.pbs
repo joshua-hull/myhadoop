@@ -1,0 +1,30 @@
+#!/bin/bash
+
+
+#PBS -N 2node
+#PBS -l select=2:ncpus=17:mem=10gb
+#PBS -l walltime=2:00:00
+#PBS -j oe
+set -x
+
+NUM_HOSTS=$(wc -l < ${PBS_NODEFILE})
+
+$MY_HADOOP_HOME/bin/myhadoop-configure.sh -n $NUM_HOSTS -c $HADOOP_CONF_DIR
+
+hdfs --config $HADOOP_CONF_DIR namenode -format -force
+
+start-dfs.sh
+start-yarn.sh
+
+sleep 30s
+
+cd /newscratch/jhull/Project/2/WordCount
+
+hdfs --config $HADOOP_CONF_DIR dfs -mkdir -p Project/WordCount
+time -p hdfs --config $HADOOP_CONF_DIR dfs -put input Project/WordCount
+time -p hadoop --config $HADOOP_CONF_DIR jar WordCount.jar org.apache.hadoop.examples.WordCount Project/WordCount/input Project/WordCount/output
+
+stop-dfs.sh
+stop-yarn.sh
+
+$MY_HADOOP_HOME/bin/myhadoop-cleanup.sh -n $NUM_HOSTS

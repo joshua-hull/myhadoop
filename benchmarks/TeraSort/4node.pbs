@@ -1,0 +1,32 @@
+#!/bin/bash
+
+
+#PBS -N 4node
+#PBS -l select=4:ncpus=17:mem=10gb
+#PBS -l walltime=2:00:00
+#PBS -j oe
+set -x
+
+NUM_HOSTS=$(wc -l < ${PBS_NODEFILE})
+
+$MY_HADOOP_HOME/bin/myhadoop-configure.sh -n $NUM_HOSTS -c $HADOOP_CONF_DIR
+
+hdfs --config $HADOOP_CONF_DIR namenode -format -force
+
+start-dfs.sh
+start-yarn.sh
+
+sleep 30s
+
+cd /newscratch/jhull/Project/2/TeraSort
+
+hdfs --config $HADOOP_CONF_DIR dfs -mkdir -p Project/TeraSort/
+
+time -p hadoop --config $HADOOP_CONF_DIR jar TeraSort.jar org.apache.hadoop.examples.terasort.TeraGen 100000 Project/TeraSort/TeraInput
+time -p hadoop --config $HADOOP_CONF_DIR jar TeraSort.jar org.apache.hadoop.examples.terasort.TeraSort Project/TeraSort/TeraInput Project/TeraSort/TeraOutput
+time -p hadoop --config $HADOOP_CONF_DIR jar TeraSort.jar org.apache.hadoop.examples.terasort.TeraValidate Project/TeraSort/TeraOutput Project/TeraSort/TeraValidate
+
+stop-dfs.sh
+stop-yarn.sh
+
+$MY_HADOOP_HOME/bin/myhadoop-cleanup.sh -n $NUM_HOSTS
