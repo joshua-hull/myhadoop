@@ -83,22 +83,28 @@
                         					\caption{Hadoop 2 TeraSort Runtimes}
                     				\end{center}
                   			\end{figure}
+
+					As with previously seen with the WordCount tests, TeraSort showed increased runtimes with increased nodes due to overheads early but improved after several TaskTracker nodes were added. What’s more is that we see a significant decrease from a sequential, singular node running TeraSort to two nodes but then sharply increases when moving up to eight nodes. This could be caused by many factors such as resource management not being optimal during testing or communications were congested since the Palmetto is always open for other users to run their programs on which could cause small, but consistent, performance drops in our runtimes.
 				\subsection{Hadoop 1 Testing}
 					The Hadoop benchmarking took place under similar conditions to the Hadoop 2 tests. There was one node specified at the headnode that ran the NameNode and JobTracker components to Hadoop. The primary difference is that the headnode did not run TaskTrakcer or DataNode components. Each node used 17 processor cores and 10 GB of memory. The same java jar file was used to benchmark Hadoop as was used in Hadoop 2. The runtimes were collected in a similar manner to Hadoop 2.
 					\subsubsection{WordCount}
 					WordCount on Hadoop was run using the same set of input files as listed above with Hadoop 2. The only changes were those necessitated with the changes from Hadoop 2 to Hadoop. These include using hadoop commands that were deprecated with Hadoop 2.
+
 						\begin{figure}[h]
                    					\begin{center}
                        						\input{hadoop_wordcount}
                         						\caption{Hadoop WordCount Runtimes}
                     				\end{center}
                   			\end{figure}
+
+					We can see that moving from sequential to multiple nodes improved runtime efficiency on Hadoop 1 as well and even had similar effects in overhead resource slowing down performance in the smaller number of node tests that improved later on. The Hadoop 1 tests however could not replicate the testing circumstances of Hadoop 2 for larger amounts of datanodes due to Hadoop 1 and Palmetto architecture working together. Because Hadoop 1 has a namenode setup that does not allow it to be a data processing node as well, in order to achieve a 16 node performance the system must allocate 17 nodes instead to account for the non-working namenode. In Palmetto’s current architecture accessing more than 16 nodes requires allocation to a specific set of nodes on the cluster and the resources of which are much harder to acquire because of the uncommon request compared to many of the uses Palmetto sees. Therefore testing in Hadoop 1 to optimize time and efficiency could only test up to 8 working datanodes and so performance of a higher amount of nodes must be inferred based on
+available data.
 					\subsubsection{TeraSort}
 						The TeraSort benchmarks were performed in a similar matter the Hadoop 2 Benchmarks. TeraGen was given 100000 as an input parameter.
 						\begin{figure}[h]
                    					\begin{center}
                        						%\input{hadoop_terasort}
-                        						\caption{Hadoop WordCount Runtimes}
+                        						\caption{Hadoop TeraSort Runtimes}
                     				\end{center}
                   			\end{figure}
 				\subsection{Overall Performance}
@@ -113,6 +119,8 @@
                        					%\input{terasort}
                         					\caption{Hadoop 1 and 2 TeraSort Runtimes}
                     				\end{center}
+
+						As the data suggests there are differences in performance between Hadoop 1 and Hadoop 2 as well assome interesting points to note. The data showed that while both implementations improved program performance as more nodes were added, Hadoop 2’s resource management and usable resource namenode allowed it to have a more significant improvement to performance based on node amounts as compared to Hadoop 1 in setup. At the same time though evidence suggests that while Hadoop 2 had greater improvement with respect to its own times it was Hadoop 1 that had the best overall performance for running WordCount and TeraSort programs. This conclusion could be somewhat erroneous due to many circumstances such as when the tests were run for each system on Palmetto, what kind of resources were available, and even perhaps if our current Hadoop 2 setup was not fully optimized to its potential. There is lots of room for improving our Hadoop 2 system to make better use of its resources and its implementation specifically in the Palmetto cluster but early results are promising. Hadoop 2 can and should outperform our Hadoop 1 setup and while our tests showed definite advantages in terms of mult-node runtime efficiency there is still opportunity in pushing the overall runtime down to surpass Hadoop 1’s and improve overall performance of big-data computation on the cluster.
                   			\end{figure}
 	\section{Conclusion}
 			This project had many challenges and situations where it took us time to learn and try different methods in getting our system to run through trial-and-error. While the system may not be perfect for all possible current needs, our group believes that the new Hadoop 2 system has proven itself to work and to have better performance and reliability than Hadoop 1. This project has laid the groundwork for further testing and expansion to replace the old system with ours for everyday use on the Palmetto cluster. The authors of this paper, Joshua, Alex, and Mark, have managed to create a new system for our users on the cluster for better big data computation. We suggest that our work should be continued to be improved upon to make it the best system possible. We ask that our work\cite{projectcode}, all the source and environment, be open to others to use and to develop with to create fixes and improvements to our implementation and to move the Hadoop 2 system to a full replacement of the Hadoop 1. Ideally, the cluster would have a dedicated system in place with scalability options for expansion and upgrade of Hadoop going forward. We invite our peers to make full use of our PBS-based HPC system with Hadoop 2 and thank you for the opportunity to make it possible.
