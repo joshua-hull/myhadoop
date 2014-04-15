@@ -40,7 +40,7 @@
 
                 With the new features prevalent in Hadoop 2, there was also the issue of implementing the new resource tracking system that wasn’t initially set up when creating the system in our project, but with the work Alex had been working on for CCIT to set up their own configuration of Hadoop 2, we were able to borrow the OpenClemson source\cite{openclemson} for the resource system to assist us in getting ours working correctly.
 			\subsection{Palmetto Environment}
-				One of our earliest challenges was in setting up the new Hadoop environment on the Palmetto without disrupting the current Hadoop 1 framework and optimizing Hadoop 2 to run its configuration in compatibility with the current Hadoop. Fortunately, Alex had been working with CCIT in Clemson on getting this done with OrangeFS. Through research and contact, he found a partially configured opensource implementation of Hadoop 2.2.0 developed by the San Diego Supercomputer Center. With a few bug fixes to let certain conditions on PBS Pro work correctly, we managed to incorporate the new myHadoop in our scripting and testing without having to greatly edit or modify an older version. As a result, we now have a well-organized environment for Hadoop users.
+				One of our earliest challenges was in setting up the new Hadoop environment on the Palmetto without disrupting the current Hadoop 1 framework and optimizing Hadoop 2 to run its configuration in compatibility with the current Hadoop. Fortunately, Alex had been working with CCIT in Clemson on getting this done with OrangeFS. Through research and contact, he found a partially configured open source implementation of Hadoop 2.2.0 developed by the San Diego Supercomputer Center. With a few bug fixes to let certain conditions on PBS Pro work correctly, we managed to incorporate the new myHadoop in our scripting and testing without having to greatly edit or modify an older version. As a result, we now have a well-organized environment for Hadoop users.
 
 
                 Another challenge in getting myHadoop2 working on Palmetto was a setting present in the OpenClemson code that altered the list of nodes. This setting was designed to allow Hadoop 2 to use the InfiniBand connections available between compute nodes on Palmetto. However this setting was supplying incorrect node names. The setting was commented out, and Hadoop 2 is now using the 10 gb Ethernet connections between nodes. Seeing as this setting is only a regular expression, it can be modified in the future by someone with more knowledge on the subject and the network architecture of the Palmetto cluster.
@@ -59,7 +59,7 @@
                       					\item From The Earth to the Moon\cite{moon}
                      					\item The Adventures of Tom Sawyer\cite{tom}
                   				\end{itemize}
-						The benchmark used the unmodified WordCount example code from the Hadoop 1.1.2 downloaded from Apache and compiled into a java jar file. The jar file was run via the hadoop command amd timed via the time command. The recoreded user times are plotted in figure one below.
+						The benchmark used the unmodified WordCount example code from the Hadoop 1.1.2 downloaded from Apache and compiled into a java jar file. The jar file was run via the hadoop command and timed via the time command. The recorded user times are plotted in figure one below.
 		
 		Each compute node used 17 processing cores and 10 GB of memory and was networked to the other nodes via a 10 GB Ethernet link. One node was designated the headnode and ran the NameNode, JobTracker, and YARN resource manager components of Hadoop. Each node, including the headnode, also ran the TaskTracker and DataNode components.
 
@@ -76,7 +76,7 @@
 				\subsubsection{TeraSort}
 					The second benchmark that was run was TeraSort. Due to time and resource constraints TeraGen was run with only 100000 as the input.
 
-					The benchmark userd the unmodified TeraSort example code from the Hadoop 1.1.2 downloaded from Apache and compuled into a hava jar file. This jar file was then run via the hadoop command and timed via the time command. The recorded user times are plotted in figure two below. The Hadoop enviornemnt is the same configuration as outlined above in WordCount.
+					The benchmark used the unmodified TeraSort example code from the Hadoop 1.1.2 downloaded from Apache and compiled into a Java jar file. This jar file was then run via the hadoop command and timed via the time command. The recorded user times are plotted in figure two below. The Hadoop environment is the same configuration as outlined above in WordCount.
 					\begin{figure}[h]
                    				\begin{center}
                        					\input{hadoop2_terasort}
@@ -84,9 +84,9 @@
                     				\end{center}
                   			\end{figure}
 				\subsection{Hadoop 1 Testing}
-					The Hadoop benchmarking took place under similar conidtions to the Hadoop 2 tests. There was one node specified at the headnode that ran the NameNode and JobTracker components to Hadoop. The primary difference is that the headnode did not run TaskTrakcer or DataNode components. Each node used 17 processor cores and 10 GB of memory. The same java jar file was used to benchmark Hadoop as was used in Hadoop 2. The runtimes were collected in a similar mannar to Hadoop 2.
+					The Hadoop benchmarking took place under similar conditions to the Hadoop 2 tests. There was one node specified at the headnode that ran the NameNode and JobTracker components to Hadoop. The primary difference is that the headnode did not run TaskTrakcer or DataNode components. Each node used 17 processor cores and 10 GB of memory. The same java jar file was used to benchmark Hadoop as was used in Hadoop 2. The runtimes were collected in a similar manner to Hadoop 2.
 					\subsubsection{WordCount}
-					WordCount on Hadoop was run using the same set of input files as listed above with Hadoop 2. The only changes were those neccesitated with the changes from Hadoop 2 to Hadoop. These include using hadoop commands that were depricated with Hadoop 2.
+					WordCount on Hadoop was run using the same set of input files as listed above with Hadoop 2. The only changes were those necessitated with the changes from Hadoop 2 to Hadoop. These include using hadoop commands that were deprecated with Hadoop 2.
 						\begin{figure}[h]
                    					\begin{center}
                        						\input{hadoop_wordcount}
@@ -94,7 +94,7 @@
                     				\end{center}
                   			\end{figure}
 					\subsubsection{TeraSort}
-						The TeraSort benchmarks were performed in a simialar matter the Hadoop 2 Benchmarks. TeraGen was givven 100000 as an input parameter.
+						The TeraSort benchmarks were performed in a similar matter the Hadoop 2 Benchmarks. TeraGen was given 100000 as an input parameter.
 						\begin{figure}[h]
                    					\begin{center}
                        						%\input{hadoop_terasort}

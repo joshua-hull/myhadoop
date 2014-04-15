@@ -1,8 +1,8 @@
 \documentclass[conference]{IEEEtran}
 
 \begin{document}
-	\title{Implementaiton of Hadoop 2 on PBS-based HPC Systems}
-	\author{\IEEEauthorblockN{Joshuaua Hull, Mark Baker, Alex Berk}
+	\title{Implementation of Hadoop 2 on PBS-based HPC Systems}
+	\author{\IEEEauthorblockN{Joshua Hull, Mark Baker, Alex Berk}
 		\IEEEauthorblockA{School of Computing\\
 			Clemson University\\
 			Clemson, SC 29632\\
@@ -12,64 +12,112 @@
 	\maketitle
 
 	\begin{abstract}
-		Mark Baker, Alex Berk, and Joshuaua Hull implemented Hadoop 2 on a PBS-based HPC System on the Palmetto Cluster in a version update from Hadoop 1. Development saw challenges to creating a cluster environment on the Palmetto cluster that still would work with existing Hadoop 1 scripts and infrastructure and PBS script editing to support the additional features and components like YARN in the Hadoop 2 framework. Thorough testing with WordCount and TeraSort/g was used to measure the success of implementation and initialization of the Hadoop 2 cluster.
+		Mark Baker, Alex Berk, and Joshua Hull implemented Hadoop 2 on a PBS-based HPC System on the Palmetto Cluster in a version update from Hadoop 1. Development saw challenges to creating a cluster environment on the Palmetto cluster that still would work with existing Hadoop 1 scripts and infrastructure and PBS script editing to support the additional features and components like YARN in the Hadoop 2 framework. Thorough testing with WordCount and TeraSort was used to measure the success of implementation and initialization of the Hadoop 2 cluster.
 	\end{abstract}
 
 	\section{Introduction}
-		As part of a group project for Clemson University's class on Distributed and Cluster Computing Mark Baker, Alex Berk, and Joshuaua Hull worked to implement the myHadoop2 framework and environment on a cluster of the Palmetto Supercomputing Cluster at Clemson Univeristy. This environment will allow users to run the updated Hadoop 2 framework in an on demand cluster on Palmetto. Hadoop 2 introduced additional tools that need to be handled by myHadoop2, such as the YARN resource management system. These new tools help to reduce bottlenecks in Hadoop and generally increase performance. The purpose of myHadoop2 is to give the users of Palmetto and other PBS based systems a way to set up a dynamic Hadoop 2 cluster in order to take advantage of these new features while still allowing use of the original Hadoop 1 programs.
+		As part of a group project for Clemson University's class on Distributed and Cluster Computing Mark Baker, Alex Berk, and Joshua Hull worked to implement the myHadoop2 framework and environment on the Palmetto Supercomputing Cluster at Clemson University. This environment will allow users to run the updated Hadoop 2 framework in an on demand cluster on Palmetto. Hadoop 2 introduced additional tools that need to be handled by myHadoop2, such as the YARN resource management system. These new tools help to reduce bottlenecks in Hadoop and generally increase performance. The purpose of myHadoop2 is to give the users of Palmetto and other PBS based systems a way to set up a dynamic Hadoop 2 cluster in order to take advantage of these new features while still allowing use of the original Hadoop 1 programs.
 
-        In addition to implementing the myHadoop2 script the group also be benchmarked the script against its predecessor in similar cluster environments on Palmetto. The group implemented two standard Hadoop benchmarks: WordCount and TeraSort/g. These benchmarks were implemented in identical manners and only changed where the differences between Hadoop versions necessitated them to be.
+
+        In addition to implementing the myHadoop2 script the group also be benchmarked the script against its predecessor in similar cluster environments on Palmetto. The group implemented two standard Hadoop benchmarks: WordCount and TeraSort. These benchmarks were implemented in identical manners and only changed where the differences between Hadoop versions necessitated them to be.
 
 	\section{myHadoop2 Implementation}
 		\subsection{Technical Implementation}
 			The group worked for several weeks modified the existing myHadoop scripts to work with Hadoop 2. The modifications involved adjusting the scripts to configure the new YARN resource manager system as well as the resource manager on the namenode of the cluster and changes to the PBS scripts to allow Hadoop 1 scripted jobs to work in the Hadoop 2 framework. The script will need to be able to modify the new components’ configurations based on the resources that the PBS system has allocated to the user.
 
 		\subsection{Group Members}
-			The group members that were responsible for implementing myHadoop2 successfully were as stated before: Joshuaua Hull, Alex Berk, and Mark Baker. Each team member brought along various pieces of experience and was responsible for components that reflect their strengths in regards to the projects requirements for success. 
+			The group members that were responsible for implementing myHadoop2 successfully were as stated before: Joshua Hull, Alex Berk, and Mark Baker. Each team member brought along various pieces of experience and was responsible for components that reflect their strengths in regards to the projects requirements for success. 
 
-			Joshuaua was responsible for benchmark development and testing along with collaborating with the partners on various parts of the project. His approximate four years in using the Linux operating system and installing and configuring software for it meant that he was able to quickly install and configure a system with both Hadoop and Hadoop 2 installed on it. Joshuaua was also responsible for developing the benchmark procedures that allowed the team to compare the performance of myHadoop2 to its predecessor using the testing situations in WordCount and TeraSort/g. The development of the benchmarks was aided by the number of years of Java experience Joshuaua has learned and worked with.
+			Joshua was responsible for benchmark development and testing along with collaborating with the partners on various parts of the project. His approximate four years in using the Linux operating system and installing and configuring software for it meant that he was able to quickly install and configure a system with both Hadoop and Hadoop 2 installed on it. Joshua was also responsible for developing the benchmark procedures that allowed the team to compare the performance of myHadoop2 to its predecessor using the testing situations in WordCount and TeraSort. The development of the benchmarks was aided by the number of years of Java experience Joshua has learned and worked with.
 
-			Alex was primarily responsible for the development of the myHadoop2 script with assistance from Joshuaua. Alex is currently working with Clemson Computing and Infomation Technology, or CCIT, to get Hadoop 2 working on the Palmetto cluster, and was able to bring this experience to the project and successfully implement that goal for both the success of the project and the goal of CCIT. He is directly involved in the implementation of Hadoop 2 over OrangeFS as well, which greatly benefited him in progressing the myHadoop scripting on the cluster efficiently and with the best performance.
+			Alex was primarily responsible for the development of the myHadoop2 script with assistance from Joshua. Alex is currently working with Clemson Computing and Information Technology, or CCIT, to get Hadoop 2 working on the Palmetto cluster, and was able to bring this experience to the project and successfully implement that goal for both the success of the project and the goal of CCIT. He is directly involved in the implementation of Hadoop 2 over OrangeFS as well, which greatly benefited him in progressing the myHadoop scripting on the cluster efficiently and with the best performance.
 
-			Mark was responsible for documentation of the project and collaboration on development with Alex and Joshuaua with the implementation to complete this objective. Mark has worked in a functional analyst role over the past three years and has experience in documentation of analyses and projects and worked closely with Joshuaua and Alex throughout the development and implementation process to bring a complete and detailed understanding of the project to its documentation and presentation.
+			Mark was responsible for documentation of the project and collaboration on development with Alex and Joshua with the implementation to complete this objective. Mark has worked as a functional analyst for the past three years and has experience in documentation of analyses and projects. He worked closely with Joshua and Alex throughout the development and implementation process to bring a complete and detailed understanding of the project to its documentation and presentation.
 
 		\section{Challenges and Difficulties}
 			\subsection{Script Modification}
-				During the script editing and testing of the project, Joshua came across issues in configuring a Hadoop environment using the myHadoop configuration scripts. Understand the configuration scripts were a particular challenge and took time to for Joshua to educate himself in understanding the major components to the scripts and to find out the tools associated with Hadoop to configure them appropriately for our project. While working on the configuration elsewhere there were times when the configuration itself proved confusing due to their locations in Hadoop 2 versus Hadoop 1. 
+				During the script editing and testing of the project, Joshua came across issues in configuring a Hadoop environment using the myHadoop configuration scripts. Understanding the configuration scripts was a particular challenge. It took time for Joshua to educate himself in understanding the major components of the scripts and to find out the tools associated with Hadoop in order to configure them appropriately for our project. While working on the configuration elsewhere there were times when the configuration itself proved confusing due to its file references in Hadoop 2 compared with Hadoop 1. 
 
-                With the new features prevalent in Hadoop 2 there was also the issue of implementing the new resource tracking system that wasn’t initially set up when creating the system in our project, but with the work Alex had been working on for CCIT to set up their own configuration of Hadoop 2 we were able to borrow the OpenClemson source\cite{openclemson} for the resource system to assist us in getting ours working correctly.
-			\subsection{Palmetto Enviornment}
-				One of our earliest challenges was in setting up the new Hadoop environment on the Palmetto without disrupting the current Hadoop 1 framework and optimizing Hadoop 2 to run its configuration in compatibility with the current Hadoop. Fortunately Alex had been working with CCIT in Clemson on getting this done with OrangeFS and through research and contact found the configured implementation of Hadoop 2.2 from the San Diego Supercomputer Center, and with a few bug fixes to let certain conditions on Palmetto work correctly managed to incorporate the new Hadoop in for scripting and testing without having to greatly edit or modify an older version and now has a well-organized environment for Hadoop users.
+                With the new features prevalent in Hadoop 2, there was also the issue of implementing the new resource tracking system that wasn’t initially set up when creating the system in our project, but with the work Alex had been working on for CCIT to set up their own configuration of Hadoop 2, we were able to borrow the OpenClemson source\cite{openclemson} for the resource system to assist us in getting ours working correctly.
+			\subsection{Palmetto Environment}
+				One of our earliest challenges was in setting up the new Hadoop environment on the Palmetto without disrupting the current Hadoop 1 framework and optimizing Hadoop 2 to run its configuration in compatibility with the current Hadoop. Fortunately, Alex had been working with CCIT in Clemson on getting this done with OrangeFS. Through research and contact, he found a partially configured opensource implementation of Hadoop 2.2.0 developed by the San Diego Supercomputer Center. With a few bug fixes to let certain conditions on PBS Pro work correctly, we managed to incorporate the new myHadoop in our scripting and testing without having to greatly edit or modify an older version. As a result, we now have a well-organized environment for Hadoop users.
 
-                Another challenge to get myHadoop2 working on Palmetto was was a setting present in the OpenClemson code that altered the list of nodes. This setting was designed to allow Hadoop 2 to use the InfiniBand connections avaliable between compute nodes on Palmetto. However this setting was giving incorrect node names. The setting was commented out and Hadoop 2 is now using the 10 gb ethernet connections between nodes. Seeing as this setting is only a regular expression it can be modified in the future by someone with more knowledge on the the subject and the network architecture of the Palmetto cluster.
+
+                Another challenge in getting myHadoop2 working on Palmetto was a setting present in the OpenClemson code that altered the list of nodes. This setting was designed to allow Hadoop 2 to use the InfiniBand connections available between compute nodes on Palmetto. However this setting was supplying incorrect node names. The setting was commented out, and Hadoop 2 is now using the 10 gb Ethernet connections between nodes. Seeing as this setting is only a regular expression, it can be modified in the future by someone with more knowledge on the subject and the network architecture of the Palmetto cluster.
+
 
 		\section{Configuration and Testing}
-			As with all new systems, they must be tested in various configurations and with different test suites and the implementation of Hadoop 2 for this project was no exception. Once the initial system was up and running on the Palmetto we ran a battery of tests using WordCount and TeraSort/g programs for easy measuring and performance testing due to their reliable and simple architecture that would allow us to test various configurations of jobs on Hadoop 2. At the same time we also ran these same configurations and programs through the Hadoop 1 system so we could then compare results back with Hadoop 2 to see if the performance differences were correctly evaluated and if any issues arose during actual testing and deployment of the new system.
+			As with all new systems, they must be tested in various configurations and with different test suites, and the implementation of Hadoop 2 for this project was no exception. Once the initial system was up and running on the Palmetto cluster, we ran a battery of tests using WordCount and TeraSort programs for easy measuring and performance testing due to their reliable and simple architecture. This allowed us to test various configurations of jobs on Hadoop 2. At the same time we also ran these same configurations and programs through the Hadoop 1 system so we could then compare results back with Hadoop 2 to see if the performance differences were correctly evaluated and if any issues arose during the actual testing and deployment of our new system.
+
 			\subsection{Hadoop 2 Testing}
-               \subsubsection{WordCount}
-                    The first benchmark conducted was WordCount. This benchmark counted the number of words in several classic works from the Project Gutenburg website\cite{gutenburg}:
-                    \begin{itemize}
-                        \item A Connecticut Yankee in King Arthur's Court\cite{yankee}
-                        \item Adventures of Huckleberry Finn\cite{huck}
-                        \item Around The World in 80 Days\cite{80days}
-                      \item From The Earth to the Moon\cite{moon}
-                     \item The Adventures of Tom Sawyer\cite{tom}
-                  \end{itemize}
-                  \begin{figure}[h]
-                    \begin{center}
-                        \input{hadoop2_wordcount}
-                        \caption{Graph Caption}
-                        \label{graph:graph1}
-                    \end{center}
-                  \end{figure}
-			\subsection{Hadoop 1 Testing}
-			\subsection{Overall Performance}
+               			\subsubsection{WordCount}
+                    				The first benchmark conducted was WordCount. This benchmark counted the number of words in several classic works from the Project Gutenberg website\cite{gutenburg}:
+                    				\begin{itemize}
+                    				 	\item A Connecticut Yankee in King Arthur's Court\cite{yankee}
+                        					\item Adventures of Huckleberry Finn\cite{huck}
+                        					\item Around The World in 80 Days\cite{80days}
+                      					\item From The Earth to the Moon\cite{moon}
+                     					\item The Adventures of Tom Sawyer\cite{tom}
+                  				\end{itemize}
+						The benchmark used the unmodified WordCount example code from the Hadoop 1.1.2 downloaded from Apache and compiled into a java jar file. The jar file was run via the hadoop command amd timed via the time command. The recoreded user times are plotted in figure one below.
+		
+		Each compute node used 17 processing cores and 10 GB of memory and was networked to the other nodes via a 10 GB Ethernet link. One node was designated the headnode and ran the NameNode, JobTracker, and YARN resource manager components of Hadoop. Each node, including the headnode, also ran the TaskTracker and DataNode components.
 
-		\section{Conclusion}
-			This project had many challenges and situations where it took us time to learn and try different methods in getting our system to run through trial-and-error. Now while the system may not be perfect for every use conceivable now, our group believes that the new Hadoop 2 system has proven itself to work and to have better performance and reliability than Hadoop 1 and has laid the groundwork for further testing and expansion to replace the old system with ours for everyday use on Palmetto. Through Joshua, Alex, and Mark's efforts the authors of this paper have managed to create a new system for our user on the cluster for better big data computation and suggest that our work should be continued to be improved on to make it the best system possible. We ask that our work\cite{projectcode}, all the source and environment, be open to others to use and to develop with to create fixes and improvements to our implementation and to move the Hadoop 2 system to a full replacement of the Hadoop 1 and have a dedicated system in place with scalability for expansion and upgrade with Hadoop versions yet to be developed. We wish everyone to make full use of our PBS-based HPC system with Hadoop 2 and thank you for the opportunity to make it possible in the first place.
+                  				\begin{figure}[h]
+                    					\begin{center}
+                        						\input{hadoop2_wordcount}
+                        						\caption{Hadoop 2 WordCount Runtimes}
+                    					\end{center}
+                  				\end{figure}
+		
+		The data above suggests that even while processing five relatively large files, the overhead of the MapReduce system inside Hadoop caused the runtimes to increase with the number of nodes. Eventually, the number of TaskTracker nodes reduced the runtime.
 
-	
-	\section*{Acknowledgement}
+
+				\subsubsection{TeraSort}
+					The second benchmark that was run was TeraSort. Due to time and resource constraints TeraGen was run with only 100000 as the input.
+
+					The benchmark userd the unmodified TeraSort example code from the Hadoop 1.1.2 downloaded from Apache and compuled into a hava jar file. This jar file was then run via the hadoop command and timed via the time command. The recorded user times are plotted in figure two below. The Hadoop enviornemnt is the same configuration as outlined above in WordCount.
+					\begin{figure}[h]
+                   				\begin{center}
+                       					\input{hadoop2_terasort}
+                        					\caption{Hadoop 2 TeraSort Runtimes}
+                    				\end{center}
+                  			\end{figure}
+				\subsection{Hadoop 1 Testing}
+					The Hadoop benchmarking took place under similar conidtions to the Hadoop 2 tests. There was one node specified at the headnode that ran the NameNode and JobTracker components to Hadoop. The primary difference is that the headnode did not run TaskTrakcer or DataNode components. Each node used 17 processor cores and 10 GB of memory. The same java jar file was used to benchmark Hadoop as was used in Hadoop 2. The runtimes were collected in a similar mannar to Hadoop 2.
+					\subsubsection{WordCount}
+					WordCount on Hadoop was run using the same set of input files as listed above with Hadoop 2. The only changes were those neccesitated with the changes from Hadoop 2 to Hadoop. These include using hadoop commands that were depricated with Hadoop 2.
+						\begin{figure}[h]
+                   					\begin{center}
+                       						\input{hadoop_wordcount}
+                        						\caption{Hadoop WordCount Runtimes}
+                    				\end{center}
+                  			\end{figure}
+					\subsubsection{TeraSort}
+						The TeraSort benchmarks were performed in a simialar matter the Hadoop 2 Benchmarks. TeraGen was givven 100000 as an input parameter.
+						\begin{figure}[h]
+                   					\begin{center}
+                       						%\input{hadoop_terasort}
+                        						\caption{Hadoop WordCount Runtimes}
+                    				\end{center}
+                  			\end{figure}
+				\subsection{Overall Performance}
+						\begin{figure}[h]
+                   					\begin{center}
+                       						\input{wordcount}
+                        						\caption{Hadoop 1 and 2 WordCount Runtimes}
+                    					\end{center}
+						\end{figure}
+						\begin{figure}[h]
+                   					\begin{center}
+                       					%\input{terasort}
+                        					\caption{Hadoop 1 and 2 TeraSort Runtimes}
+                    				\end{center}
+                  			\end{figure}
+	\section{Conclusion}
+			This project had many challenges and situations where it took us time to learn and try different methods in getting our system to run through trial-and-error. While the system may not be perfect for all possible current needs, our group believes that the new Hadoop 2 system has proven itself to work and to have better performance and reliability than Hadoop 1. This project has laid the groundwork for further testing and expansion to replace the old system with ours for everyday use on the Palmetto cluster. The authors of this paper, Joshua, Alex, and Mark, have managed to create a new system for our users on the cluster for better big data computation. We suggest that our work should be continued to be improved upon to make it the best system possible. We ask that our work\cite{projectcode}, all the source and environment, be open to others to use and to develop with to create fixes and improvements to our implementation and to move the Hadoop 2 system to a full replacement of the Hadoop 1. Ideally, the cluster would have a dedicated system in place with scalability options for expansion and upgrade of Hadoop going forward. We invite our peers to make full use of our PBS-based HPC system with Hadoop 2 and thank you for the opportunity to make it possible.
+
+
 
 \bibliographystyle{IEEEtran}
 \bibliography{Paper}
